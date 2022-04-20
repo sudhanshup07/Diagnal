@@ -7,7 +7,7 @@ import com.example.diagnal.common.Resource
 import com.example.diagnal.domain.model.ListingResponse
 import com.example.diagnal.domain.repository.MainRepository
 import com.example.diagnal.ui.listing.GetContentListEvent
-import com.example.diagnal.ui.listing.GetSearchListEvent
+import com.example.diagnal.ui.search.GetSearchListEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -1,7 +1,6 @@
-package com.example.diagnal.ui.listing
+package com.example.diagnal.ui.search
 
 import com.example.diagnal.domain.model.Content
-import com.example.diagnal.domain.model.ListingResponse
 
 
 sealed class GetSearchListEvent{

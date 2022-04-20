@@ -1,5 +1,6 @@
 package com.example.diagnal.ui.search
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,7 +13,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.diagnal.common.MarginItemDecoration
 import com.example.diagnal.databinding.FragmentSearchBinding
-import com.example.diagnal.ui.listing.GetSearchListEvent
 import com.example.diagnal.ui.listing.ListingAdapter
 import com.example.diagnal.ui.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,12 +36,21 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRecyclerView()
-        binding.editTextTextPersonName.doAfterTextChanged {
+        binding.editTextSearch.doAfterTextChanged {
+            if(it.toString() != ""){
+                binding.cancelSearchImageView!!.visibility = View.VISIBLE
+            }else{
+                binding.cancelSearchImageView!!.visibility = View.GONE
+            }
             viewModel.onSearch(it.toString())
+        }
+        binding.cancelSearchImageView!!.setOnClickListener {
+            binding.editTextSearch.setText("")
         }
 
         lifecycleScope.launch {
